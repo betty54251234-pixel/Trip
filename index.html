@@ -2,13 +2,13 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <meta name="theme-color" content="#f7f7f2" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="TripPath" />
   <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="apple-touch-icon" href="icons/icon-180.png" />
+  <link rel="apple-touch-icon" href="icon-180.png" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
   <link rel="stylesheet" href="styles.css" />
   <title>TripPath</title>
@@ -106,7 +106,14 @@
     <form method="dialog" id="itemForm">
       <input type="hidden" id="itemId" />
       <div class="sheet-head"><h3 id="itemDialogTitle">장소 추가</h3><button value="cancel" class="icon-btn">×</button></div>
-      <label>장소명<input id="itemName" required placeholder="예: PMQ" /></label>
+      <label>장소명
+        <div class="search-row">
+          <input id="itemName" required placeholder="예: PMQ" autocomplete="off" />
+          <button type="button" class="secondary search-btn" id="searchPlaceBtn">검색</button>
+        </div>
+      </label>
+      <div id="placeSearchStatus" class="muted search-status hidden"></div>
+      <div id="placeSearchResults" class="search-results hidden"></div>
       <div class="two-col">
         <label>Day<select id="itemDay"></select></label>
         <label>종류<select id="itemCategory"><option>관광</option><option>음식</option><option>카페</option><option>쇼핑</option><option>숙소</option><option>기타</option></select></label>
@@ -116,10 +123,10 @@
       <label>우선순위<select id="itemPriority"><option value="must">⭐ 꼭 감</option><option value="want" selected>가고 싶음</option><option value="maybe">시간 남으면</option></select></label>
       <label>메모<textarea id="itemNote" rows="2" placeholder="먹을 메뉴, 입장 정보 등"></textarea></label>
       <div class="coord-box">
-        <div><strong>위치</strong><div id="coordText" class="muted">지도에서 위치를 찍어 주세요.</div></div>
+        <div><strong>위치</strong><div id="coordText" class="muted">장소를 검색하거나 지도에서 위치를 찍어 주세요.</div></div>
         <button type="button" class="secondary small" id="pickLocationBtn">지도에서 찍기</button>
       </div>
-      <input type="hidden" id="itemLat" /><input type="hidden" id="itemLng" />
+      <input type="hidden" id="itemLat" /><input type="hidden" id="itemLng" /><input type="hidden" id="itemLocationLabel" />
       <button class="primary full" value="default">저장</button>
       <button type="button" class="danger full hidden" id="deleteItemBtn">삭제</button>
     </form>
@@ -129,7 +136,7 @@
     <form method="dialog" id="settingsForm">
       <div class="sheet-head"><h3>설정</h3><button value="cancel" class="icon-btn">×</button></div>
       <div class="info-box">
-        실제 도보 경로는 openrouteservice의 <b>foot-walking</b>을 사용합니다. 무료 API 키를 한 번 발급해 이 기기에만 저장하세요.
+        장소 검색과 실제 도보 경로는 openrouteservice를 사용합니다. 무료 API 키를 한 번 발급해 이 기기에만 저장하세요. 키는 GitHub 코드에 들어가지 않습니다.
       </div>
       <label>openrouteservice API Key<input id="orsKey" type="password" autocomplete="off" placeholder="키를 붙여넣기" /></label>
       <button class="primary full" value="default">저장</button>

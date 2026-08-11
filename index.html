@@ -10,7 +10,7 @@
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="apple-touch-icon" href="icon-180.png" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <link rel="stylesheet" href="styles.css?v=2.2" />
+  <link rel="stylesheet" href="styles-v23.css?v=2.3" />
   <title>TripPath</title>
 </head>
 <body>
@@ -91,22 +91,22 @@
   </div>
 
   <dialog id="tripDialog" class="sheet">
-    <form method="dialog" id="tripForm">
-      <div class="sheet-head"><h3>여행 만들기</h3><button type="button" class="icon-btn" data-close-dialog="tripDialog" aria-label="닫기">×</button></div>
-      <label>여행 이름<input id="tripName" required placeholder="홍콩 · 마카오" /></label>
+    <div class="sheet-head sheet-head-outside"><h3>여행 만들기</h3><button type="button" class="icon-btn dialog-close" data-close-dialog="tripDialog" aria-label="닫기">×</button></div>
+    <form id="tripForm" novalidate>
+      <label>여행 이름<input id="tripName" placeholder="홍콩 · 마카오" /></label>
       <div class="two-col trip-date-grid">
-        <label>출발일<input id="tripStart" type="date" required /></label>
-        <label>종료일<input id="tripEnd" type="date" required /></label>
+        <label>출발일<input id="tripStart" type="date" /></label>
+        <label>종료일<input id="tripEnd" type="date" /></label>
       </div>
-      <button class="primary full" value="default">저장</button>
+      <button type="submit" class="primary full">저장</button>
     </form>
   </dialog>
 
   <dialog id="itemDialog" class="sheet">
-    <form method="dialog" id="itemForm">
+    <form id="itemForm" novalidate>
       <input type="hidden" id="itemId" />
       <div class="sheet-head"><h3 id="itemDialogTitle">장소 추가</h3><button type="button" class="icon-btn" data-close-dialog="itemDialog" aria-label="닫기">×</button></div>
-      <label>장소명<input id="itemName" required placeholder="예: PMQ" /></label>
+      <label>장소명<input id="itemName" placeholder="예: PMQ" /></label>
       <div class="two-col">
         <label>Day<select id="itemDay"></select></label>
         <label>종류<select id="itemCategory"><option>관광</option><option>음식</option><option>카페</option><option>쇼핑</option><option>숙소</option><option>기타</option></select></label>
@@ -120,19 +120,19 @@
         <button type="button" class="secondary small" id="pickLocationBtn">지도에서 찍기</button>
       </div>
       <input type="hidden" id="itemLat" /><input type="hidden" id="itemLng" />
-      <button class="primary full" value="default">저장</button>
+      <button type="submit" class="primary full">저장</button>
       <button type="button" class="danger full hidden" id="deleteItemBtn">삭제</button>
     </form>
   </dialog>
 
   <dialog id="settingsDialog" class="sheet">
-    <form method="dialog" id="settingsForm">
+    <form id="settingsForm" novalidate>
       <div class="sheet-head"><h3>설정</h3><button type="button" class="icon-btn" data-close-dialog="settingsDialog" aria-label="닫기">×</button></div>
       <div class="info-box">
-        실제 도보 경로는 openrouteservice의 <b>foot-walking</b>을 사용합니다. 무료 API 키를 한 번 발급해 이 기기에만 저장하세요.
+        실제 도보 경로는 openrouteservice의 <b>foot-walking</b>을 사용합니다. 무료 API 키를 한 번 발급해 이 기기에만 저장하세요.<br><small>TripPath v2.3</small>
       </div>
       <label>openrouteservice API Key<input id="orsKey" type="password" autocomplete="off" placeholder="키를 붙여넣기" /></label>
-      <button class="primary full" value="default">저장</button>
+      <button type="submit" class="primary full">저장</button>
       <button type="button" class="ghost full" id="clearAllBtn">이 기기 데이터 전체 삭제</button>
     </form>
   </dialog>
@@ -145,6 +145,6 @@
   <div id="toast" class="toast"></div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="app.js?v=2.2"></script>
+  <script src="app-v23.js?v=2.3"></script>
 </body>
 </html>

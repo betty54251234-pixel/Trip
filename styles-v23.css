@@ -1,0 +1,127 @@
+:root{
+  --bg:#f5f5ef;--card:#fff;--ink:#181816;--muted:#77776f;--line:#e5e5dd;--accent:#1d3b2a;
+  --accent-weak:#e9efe9;--danger:#b63b36;--shadow:0 12px 34px rgba(33,33,24,.08);
+}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Noto Sans KR",system-ui,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}body{min-height:100vh}.topbar{height:78px;padding:16px 18px 10px;display:flex;align-items:flex-end;justify-content:space-between;position:sticky;top:0;z-index:50;background:rgba(245,245,239,.88);backdrop-filter:blur(18px)}h1,h2,h3,p{margin:0}h1{font-size:24px}h2{font-size:25px;line-height:1.25}h3{font-size:18px}.eyebrow{font-size:10px;letter-spacing:.18em;color:var(--muted);font-weight:700;margin-bottom:4px}.muted{color:var(--muted);font-size:13px}.view{display:none;padding:12px 16px 96px}.view.active{display:block}.map-view.active{display:flex;flex-direction:column;gap:10px;padding-bottom:86px}.hero-card{background:var(--accent);color:#fff;border-radius:26px;padding:22px;min-height:208px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow)}.hero-card .muted{color:#cbd6ce}.hero-card h2{font-size:27px;margin-top:8px}.section-head,.map-toolbar{display:flex;align-items:center;justify-content:space-between;margin:18px 2px 10px}.sticky-head{position:sticky;top:78px;z-index:30;background:linear-gradient(var(--bg) 78%,rgba(245,245,239,0));padding:8px 0 12px;margin-top:0}.primary,.secondary,.ghost,.danger,.text-btn,.icon-btn{border:0;border-radius:14px;padding:11px 14px}.primary{background:var(--ink);color:white;font-weight:700}.hero-card .primary{background:#fff;color:var(--accent)}.secondary{background:var(--accent-weak);color:var(--accent);font-weight:700}.ghost{background:#ecece6;color:var(--ink)}.danger{background:#fae8e7;color:var(--danger);font-weight:700}.text-btn{background:transparent;color:var(--accent);font-weight:700;padding:7px}.icon-btn{background:rgba(255,255,255,.65);font-size:20px;line-height:1;width:42px;height:42px;padding:0}.small{padding:9px 11px;border-radius:12px;font-size:13px}.full{width:100%;margin-top:10px}.card-list{display:flex;flex-direction:column;gap:10px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 4px 15px rgba(33,33,24,.035)}.trip-card{display:flex;justify-content:space-between;align-items:center}.trip-card.active{border-color:#8da091;background:#fbfdfb}.trip-card button{background:none;border:0;text-align:left;flex:1}.trip-card .chev{font-size:22px;color:var(--muted)}.day-tabs{display:flex;gap:7px;overflow-x:auto;padding:4px 1px 8px;scrollbar-width:none}.day-tabs::-webkit-scrollbar{display:none}.day-chip{flex:0 0 auto;border:1px solid var(--line);background:white;border-radius:999px;padding:9px 13px;font-weight:700;font-size:13px}.day-chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}.map-filters .day-chip.active{background:var(--accent);border-color:var(--accent)}.schedule-tools{display:flex;gap:8px;margin:2px 0 12px}.schedule-tools button{flex:1}.summary-card{background:#edf1ec;border:1px solid #d8e1d8;border-radius:18px;padding:14px;margin-bottom:12px;font-size:13px}.hidden{display:none!important}.timeline{display:flex;flex-direction:column;gap:0}.timeline-item{position:relative;padding-left:34px}.timeline-item:before{content:"";position:absolute;left:12px;top:20px;bottom:-8px;border-left:2px solid var(--line)}.timeline-item:last-child:before{display:none}.dot{position:absolute;left:4px;top:18px;width:18px;height:18px;border-radius:50%;background:white;border:3px solid var(--accent);z-index:1}.timeline-item.locked .dot{background:var(--ink);border-color:var(--ink)}.item-card{background:white;border:1px solid var(--line);border-radius:18px;padding:14px;margin:6px 0}.item-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.item-title{font-weight:800;font-size:16px}.badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}.badge{font-size:11px;background:#f0f0eb;border-radius:999px;padding:5px 8px;color:#66665f}.badge.lock{background:#e8e8e3;color:#222}.move-row{display:flex;gap:6px;margin-top:10px}.move-row button{flex:1;border:0;background:#f4f4ef;border-radius:10px;padding:8px}.walk-leg{padding:2px 0 2px 34px;color:var(--muted);font-size:12px}.map-canvas{height:calc(100vh - 265px);min-height:390px;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:#e9e9e3}.map-legend{font-size:12px;color:var(--muted);padding:0 4px}.place-card .row{display:flex;justify-content:space-between;gap:10px}.place-card .meta{font-size:12px;color:var(--muted);margin-top:7px}.bottom-nav{position:fixed;bottom:0;left:0;right:0;height:76px;padding:7px 14px calc(7px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);background:rgba(250,250,247,.94);backdrop-filter:blur(18px);border-top:1px solid var(--line);z-index:80}.nav-item{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#8b8b83}.nav-item span{font-size:19px}.nav-item small{font-size:10px;font-weight:700}.nav-item.active{color:var(--ink)}dialog.sheet{border:0;border-radius:24px 24px 0 0;width:min(640px,100%);max-width:none;margin:auto 0 0;padding:0;background:#fbfbf8;box-shadow:0 -20px 50px rgba(0,0,0,.12)}dialog.sheet::backdrop{background:rgba(0,0,0,.35);backdrop-filter:blur(2px)}.sheet form,.recommendation-sheet>div:not(.sheet-head),.recommendation-sheet>.sheet-head{padding-left:18px;padding-right:18px}.sheet form{padding-bottom:calc(22px + env(safe-area-inset-bottom))}.sheet-head{display:flex;justify-content:space-between;align-items:center;padding-top:17px;padding-bottom:10px}.sheet label{display:flex;flex-direction:column;gap:7px;font-size:12px;font-weight:700;color:#62625c;margin:10px 0}.sheet input,.sheet select,.sheet textarea{width:100%;border:1px solid #ddddD5;background:#fff;border-radius:13px;padding:12px;color:var(--ink);outline:none}.sheet input:focus,.sheet select:focus,.sheet textarea:focus{border-color:#8fa091;box-shadow:0 0 0 3px rgba(29,59,42,.08)}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:9px}.switch-row{flex-direction:row!important;align-items:center;justify-content:space-between;background:white;border:1px solid var(--line);padding:12px;border-radius:14px}.switch-row input{width:auto}.coord-box,.info-box{background:#f0f0eb;border-radius:15px;padding:12px;margin:10px 0}.coord-box{display:flex;align-items:center;justify-content:space-between;gap:12px}.info-box{font-size:12px;line-height:1.55;color:#5e5e57}.recommendation-sheet{padding-bottom:calc(18px + env(safe-area-inset-bottom))}.recommend-block{background:white;border:1px solid var(--line);border-radius:18px;padding:14px;margin:8px 0}.recommend-block .arrow-list{font-size:14px;line-height:1.85;margin:8px 0}.compare{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.compare>div{background:#f3f3ee;border-radius:12px;padding:10px;font-size:12px}.toast{position:fixed;left:50%;bottom:92px;transform:translate(-50%,20px);background:#181816;color:#fff;border-radius:999px;padding:10px 15px;font-size:12px;opacity:0;pointer-events:none;transition:.2s;z-index:200;white-space:nowrap}.toast.show{opacity:1;transform:translate(-50%,0)}.empty{padding:30px 12px;text-align:center;color:var(--muted);font-size:13px}.leaflet-container{font-family:inherit}.pin-label{background:#181816;color:#fff;border:none;border-radius:999px;font-weight:800;padding:2px 7px}.pin-label:before{display:none}.picker-banner{position:absolute;top:12px;left:12px;right:12px;z-index:500;background:#181816;color:#fff;border-radius:14px;padding:12px 14px;font-size:13px;box-shadow:var(--shadow)}
+@media(min-width:720px){#app{max-width:720px;margin:0 auto;box-shadow:0 0 0 1px var(--line);min-height:100vh}.bottom-nav{left:50%;transform:translateX(-50%);max-width:720px}.map-canvas{height:620px}}
+
+/* v2: iPhone layout, map clarity, search */
+html,body{touch-action:pan-x pan-y}
+.sheet input,.sheet select,.sheet textarea{font-size:16px;min-width:0;max-width:100%}
+.two-col{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.two-col>label{min-width:0}
+.two-col input,.two-col select{min-width:0;width:100%;max-width:100%}
+.search-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:stretch}
+.search-row .search-btn{min-width:66px;margin:0}
+.search-status{margin:-2px 2px 8px;line-height:1.45}
+.search-results{display:flex;flex-direction:column;gap:7px;margin:8px 0 12px}
+.search-result{display:flex;flex-direction:column;align-items:flex-start;gap:4px;width:100%;border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px 12px;text-align:left;color:var(--ink)}
+.search-result strong{font-size:14px}
+.search-result span{font-size:11px;line-height:1.35;color:var(--muted)}
+.day-chip{position:relative;box-shadow:inset 0 0 0 2px transparent}
+.day-chip:not(.all-chip)::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--day-color);border:1.5px solid #111;margin-right:5px;vertical-align:1px}
+.day-chip.active:not(.all-chip){background:var(--day-color);border-color:#111;color:#fff;box-shadow:inset 0 0 0 1px #111;text-shadow:0 1px 1px rgba(0,0,0,.28)}
+.day-chip.active:not(.all-chip)::before{background:#fff;border-color:#111}
+.map-filters .day-chip.active:not(.all-chip){background:var(--day-color);border-color:#111}
+.map-filters .all-chip.active{background:#181816;border-color:#181816;color:#fff}
+.day-pin-wrap{background:transparent!important;border:0!important}
+.day-pin{display:inline-flex;align-items:center;justify-content:center;min-width:48px;height:28px;padding:0 7px;border-radius:999px;background:var(--day-color);border:2px solid #111;color:#fff;font-size:11px;font-weight:900;line-height:1;white-space:nowrap;box-shadow:0 2px 7px rgba(0,0,0,.18);text-shadow:0 1px 1px rgba(0,0,0,.28)}
+.map-legend{display:flex;gap:8px 12px;flex-wrap:wrap;align-items:center;line-height:1.5}
+.legend-item{display:inline-flex;align-items:center;gap:4px}
+.legend-item i{display:inline-block;width:14px;height:7px;border-radius:999px;background:var(--day-color);border:1.5px solid #111}
+.leaflet-container{touch-action:none}
+.coord-box .muted{overflow-wrap:anywhere}
+@media(max-width:390px){.sheet form{padding-left:14px;padding-right:14px}.two-col{gap:7px}.sheet input,.sheet select,.sheet textarea{padding:11px 10px}}
+
+
+/* v2.1: iPhone date-field and dialog-close fixes */
+.trip-date-grid input[type="date"]{display:block;width:100%;min-width:0;max-width:100%;overflow:hidden;-webkit-appearance:none;appearance:none}
+.trip-date-grid input[type="date"]::-webkit-date-and-time-value{min-width:0;text-align:center}
+@media(max-width:520px){
+  .trip-date-grid{grid-template-columns:1fr;gap:0}
+  .trip-date-grid>label{margin:8px 0}
+}
+
+/* v2.2: keep the app inside one viewport; scroll only where content actually overflows */
+html,body{
+  width:100%;
+  height:100%;
+  min-height:0;
+  overflow:hidden;
+  overscroll-behavior:none;
+}
+body{min-height:0}
+#app{
+  height:100dvh;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.topbar{
+  position:relative;
+  top:auto;
+  flex:0 0 78px;
+}
+main{
+  flex:1 1 auto;
+  min-height:0;
+  overflow:hidden;
+}
+.view{
+  height:100%;
+  min-height:0;
+  overflow-y:auto;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:18px;
+}
+.map-view.active{
+  height:100%;
+  min-height:0;
+  overflow:hidden;
+  padding-bottom:10px;
+}
+.map-view .map-toolbar{flex:0 0 auto}
+.map-view .day-tabs{flex:0 0 auto}
+.map-canvas{
+  flex:1 1 auto;
+  height:auto;
+  min-height:0;
+}
+.map-legend{flex:0 0 auto}
+.bottom-nav{
+  position:relative;
+  left:auto;
+  right:auto;
+  bottom:auto;
+  flex:0 0 calc(76px + env(safe-area-inset-bottom));
+  height:calc(76px + env(safe-area-inset-bottom));
+  width:100%;
+  padding:7px 14px calc(7px + env(safe-area-inset-bottom));
+}
+
+/* Bottom sheets themselves stay fixed; only their contents scroll if they become taller than the screen. */
+dialog.sheet{
+  max-height:calc(100dvh - 12px);
+  overflow:hidden;
+}
+dialog.sheet form{
+  max-height:calc(100dvh - 12px);
+  overflow-y:auto;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+}
+.recommendation-sheet{
+  max-height:calc(100dvh - 12px);
+  overflow-y:auto;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+}
+
+@media(min-width:720px){
+  #app{height:100dvh;min-height:0}
+  .bottom-nav{left:auto;transform:none;max-width:none}
+  .map-canvas{height:auto;min-height:0}
+}
+\n\n/* v2.3: hard fix for iPhone bottom-sheet close + date fields */\n.sheet-head-outside{padding-left:18px;padding-right:18px;position:relative;z-index:5}\n.dialog-close{position:relative;z-index:20;pointer-events:auto;touch-action:manipulation;-webkit-tap-highlight-color:transparent}\n#tripDialog form{padding-top:0}\n#tripDialog .trip-date-grid{grid-template-columns:1fr;gap:0}\n#tripDialog .trip-date-grid>label{width:100%;min-width:0;margin:8px 0}\n#tripDialog .trip-date-grid input[type="date"]{width:100%;min-width:0;max-width:100%}\n@media(min-width:600px){#tripDialog .trip-date-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}}\n

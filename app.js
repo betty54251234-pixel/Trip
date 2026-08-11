@@ -329,3 +329,11 @@ $('#closeRecommendBtn').onclick=()=>$('#recommendDialog').close();
 
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
 renderAll();
+
+// v2.1: close sheet buttons without submitting/validating their forms
+document.querySelectorAll('[data-close-dialog]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const dlg=document.getElementById(btn.dataset.closeDialog);
+    if(dlg?.open) dlg.close();
+  });
+});

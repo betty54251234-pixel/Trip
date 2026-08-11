@@ -32,3 +32,95 @@ html,body{touch-action:pan-x pan-y}
 .leaflet-container{touch-action:none}
 .coord-box .muted{overflow-wrap:anywhere}
 @media(max-width:390px){.sheet form{padding-left:14px;padding-right:14px}.two-col{gap:7px}.sheet input,.sheet select,.sheet textarea{padding:11px 10px}}
+
+
+/* v2.1: iPhone date-field and dialog-close fixes */
+.trip-date-grid input[type="date"]{display:block;width:100%;min-width:0;max-width:100%;overflow:hidden;-webkit-appearance:none;appearance:none}
+.trip-date-grid input[type="date"]::-webkit-date-and-time-value{min-width:0;text-align:center}
+@media(max-width:520px){
+  .trip-date-grid{grid-template-columns:1fr;gap:0}
+  .trip-date-grid>label{margin:8px 0}
+}
+
+/* v2.2: keep the app inside one viewport; scroll only where content actually overflows */
+html,body{
+  width:100%;
+  height:100%;
+  min-height:0;
+  overflow:hidden;
+  overscroll-behavior:none;
+}
+body{min-height:0}
+#app{
+  height:100dvh;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.topbar{
+  position:relative;
+  top:auto;
+  flex:0 0 78px;
+}
+main{
+  flex:1 1 auto;
+  min-height:0;
+  overflow:hidden;
+}
+.view{
+  height:100%;
+  min-height:0;
+  overflow-y:auto;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:18px;
+}
+.map-view.active{
+  height:100%;
+  min-height:0;
+  overflow:hidden;
+  padding-bottom:10px;
+}
+.map-view .map-toolbar{flex:0 0 auto}
+.map-view .day-tabs{flex:0 0 auto}
+.map-canvas{
+  flex:1 1 auto;
+  height:auto;
+  min-height:0;
+}
+.map-legend{flex:0 0 auto}
+.bottom-nav{
+  position:relative;
+  left:auto;
+  right:auto;
+  bottom:auto;
+  flex:0 0 calc(76px + env(safe-area-inset-bottom));
+  height:calc(76px + env(safe-area-inset-bottom));
+  width:100%;
+  padding:7px 14px calc(7px + env(safe-area-inset-bottom));
+}
+
+/* Bottom sheets themselves stay fixed; only their contents scroll if they become taller than the screen. */
+dialog.sheet{
+  max-height:calc(100dvh - 12px);
+  overflow:hidden;
+}
+dialog.sheet form{
+  max-height:calc(100dvh - 12px);
+  overflow-y:auto;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+}
+.recommendation-sheet{
+  max-height:calc(100dvh - 12px);
+  overflow-y:auto;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+}
+
+@media(min-width:720px){
+  #app{height:100dvh;min-height:0}
+  .bottom-nav{left:auto;transform:none;max-width:none}
+  .map-canvas{height:auto;min-height:0}
+}

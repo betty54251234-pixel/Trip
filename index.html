@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f7f2" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="TripPath" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-180.png" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>TripPath</title>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">TRIP PATH</div>
+        <h1 id="tripTitle">새 여행</h1>
+      </div>
+      <button class="icon-btn" id="settingsBtn" aria-label="설정">⚙︎</button>
+    </header>
+
+    <main>
+      <section id="homeView" class="view active">
+        <div class="hero-card">
+          <div>
+            <div class="muted" id="tripDates">여행을 먼저 만들어 주세요</div>
+            <h2 id="heroTitle">걷는 동선을 눈으로 보고,<br/>더 짧은 길은 추천만.</h2>
+          </div>
+          <button class="primary" id="newTripBtn">여행 만들기</button>
+        </div>
+
+        <div class="section-head">
+          <h3>여행</h3>
+          <button class="text-btn" id="addTripBtn">+ 추가</button>
+        </div>
+        <div id="tripList" class="card-list"></div>
+      </section>
+
+      <section id="scheduleView" class="view">
+        <div class="section-head sticky-head">
+          <div>
+            <div class="eyebrow">SCHEDULE</div>
+            <h2>일정</h2>
+          </div>
+          <button class="primary small" id="addItemBtn">+ 장소</button>
+        </div>
+        <div id="dayTabs" class="day-tabs"></div>
+        <div class="schedule-tools">
+          <button class="secondary" id="optimizeBtn">✨ 더 짧은 동선 찾기</button>
+          <button class="ghost" id="fitDayBtn">지도에서 보기</button>
+        </div>
+        <div id="routeSummary" class="summary-card hidden"></div>
+        <div id="scheduleList" class="timeline"></div>
+      </section>
+
+      <section id="mapView" class="view map-view">
+        <div class="map-toolbar">
+          <div>
+            <div class="eyebrow">MAP</div>
+            <h2>동선 지도</h2>
+          </div>
+          <button class="primary small" id="mapAddBtn">+ 위치 찍기</button>
+        </div>
+        <div id="mapDayFilters" class="day-tabs map-filters"></div>
+        <div id="map" class="map-canvas"></div>
+        <div class="map-legend" id="mapLegend"></div>
+      </section>
+
+      <section id="placesView" class="view">
+        <div class="section-head sticky-head">
+          <div>
+            <div class="eyebrow">PLACES</div>
+            <h2>장소</h2>
+          </div>
+          <button class="primary small" id="placesAddBtn">+ 추가</button>
+        </div>
+        <div id="placeList" class="card-list"></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="메인 메뉴">
+      <button data-view="homeView" class="nav-item active"><span>⌂</span><small>여행</small></button>
+      <button data-view="scheduleView" class="nav-item"><span>☷</span><small>일정</small></button>
+      <button data-view="mapView" class="nav-item"><span>⌖</span><small>지도</small></button>
+      <button data-view="placesView" class="nav-item"><span>●</span><small>장소</small></button>
+    </nav>
+  </div>
+
+  <dialog id="tripDialog" class="sheet">
+    <form method="dialog" id="tripForm">
+      <div class="sheet-head"><h3>여행 만들기</h3><button value="cancel" class="icon-btn">×</button></div>
+      <label>여행 이름<input id="tripName" required placeholder="홍콩 · 마카오" /></label>
+      <div class="two-col">
+        <label>출발일<input id="tripStart" type="date" required /></label>
+        <label>종료일<input id="tripEnd" type="date" required /></label>
+      </div>
+      <button class="primary full" value="default">저장</button>
+    </form>
+  </dialog>
+
+  <dialog id="itemDialog" class="sheet">
+    <form method="dialog" id="itemForm">
+      <input type="hidden" id="itemId" />
+      <div class="sheet-head"><h3 id="itemDialogTitle">장소 추가</h3><button value="cancel" class="icon-btn">×</button></div>
+      <label>장소명<input id="itemName" required placeholder="예: PMQ" /></label>
+      <div class="two-col">
+        <label>Day<select id="itemDay"></select></label>
+        <label>종류<select id="itemCategory"><option>관광</option><option>음식</option><option>카페</option><option>쇼핑</option><option>숙소</option><option>기타</option></select></label>
+      </div>
+      <label class="switch-row"><span>예약/고정 일정</span><input id="itemLocked" type="checkbox" /></label>
+      <label id="timeField" class="hidden">예약 시간<input id="itemTime" type="time" /></label>
+      <label>우선순위<select id="itemPriority"><option value="must">⭐ 꼭 감</option><option value="want" selected>가고 싶음</option><option value="maybe">시간 남으면</option></select></label>
+      <label>메모<textarea id="itemNote" rows="2" placeholder="먹을 메뉴, 입장 정보 등"></textarea></label>
+      <div class="coord-box">
+        <div><strong>위치</strong><div id="coordText" class="muted">지도에서 위치를 찍어 주세요.</div></div>
+        <button type="button" class="secondary small" id="pickLocationBtn">지도에서 찍기</button>
+      </div>
+      <input type="hidden" id="itemLat" /><input type="hidden" id="itemLng" />
+      <button class="primary full" value="default">저장</button>
+      <button type="button" class="danger full hidden" id="deleteItemBtn">삭제</button>
+    </form>
+  </dialog>
+
+  <dialog id="settingsDialog" class="sheet">
+    <form method="dialog" id="settingsForm">
+      <div class="sheet-head"><h3>설정</h3><button value="cancel" class="icon-btn">×</button></div>
+      <div class="info-box">
+        실제 도보 경로는 openrouteservice의 <b>foot-walking</b>을 사용합니다. 무료 API 키를 한 번 발급해 이 기기에만 저장하세요.
+      </div>
+      <label>openrouteservice API Key<input id="orsKey" type="password" autocomplete="off" placeholder="키를 붙여넣기" /></label>
+      <button class="primary full" value="default">저장</button>
+      <button type="button" class="ghost full" id="clearAllBtn">이 기기 데이터 전체 삭제</button>
+    </form>
+  </dialog>
+
+  <dialog id="recommendDialog" class="sheet recommendation-sheet">
+    <div class="sheet-head"><h3>추천 동선</h3><button class="icon-btn" id="closeRecommendBtn">×</button></div>
+    <div id="recommendBody"></div>
+  </dialog>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>
